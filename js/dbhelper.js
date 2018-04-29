@@ -1,16 +1,4 @@
-/*
-Caching service worker
-*/
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/service-worker.js').then(function () {
-    console.log('Bot registered')
-  })
-  .catch(function(){
-    console.log('reg failed');
-  });
-} else {
-  console.log('sw not supported');
-}
+
 
 
 /**
