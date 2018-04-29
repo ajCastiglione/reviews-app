@@ -34,26 +34,11 @@
       <ul id="restaurants-list"></ul>
     </section>
   </main>
-
+  
+  <script type="application/javascript" src="sw/index.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz81WCffhvSy_-9PgWVAvfBrUMLHs-DAU&libraries=places&callback=initMap"></script>
-  <script>
-    /*
-    Caching service worker
-    */
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('service-worker.js')
-      .then(function (registration) {
-          console.log('Bot registered')
-        })
-        .catch(function () {
-          console.log('reg failed');
-        });
-    } else {
-      console.log('sw not supported');
-    }
-  </script>
 
   <footer id="footer">
     Copyright (c) 2017
