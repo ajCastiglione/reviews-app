@@ -1,4 +1,4 @@
-var staticCache = 'main-cache-v3';
+var staticCache = 'main-cache-v1';
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
@@ -9,6 +9,8 @@ self.addEventListener('install', function(event) {
                 '/js/dbhelper.js',
                 '/js/restaurant_info.js', 
                 '/css/styles.css',
+                '/sw/index.js',
+                '/sw/service-worker.js',
                 '/data/restaurants.json'
             ]);
         })
@@ -16,18 +18,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event){
-    event.waitUntil(
-        caches.keys().then(function(name){
-            return Promise.all(
-                name.filter(function(name){
-                    return name.startsWith('main-') &&
-                    name != staticCache;
-                }).map(function(name) {
-                    return caches.delete(name)
-                })
-            );
-        })
-    );
+    event.waitUntil(self.clients.claim()); 
 });
 
 self.addEventListener('fetch', function(event) {
